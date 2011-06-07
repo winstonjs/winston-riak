@@ -1,0 +1,52 @@
+# winston-riak
+
+A Riak transport for [winston][0].
+
+## Installation
+
+### Installing npm (node package manager)
+```
+  curl http://npmjs.org/install.sh | sh
+```
+
+### Installing winston-riak
+```
+  [sudo] npm install winston-riak
+```
+
+## Motivation
+`tldr;?`: To break the [winston][0] codebase into small modules that work together.
+
+The [winston][0] codebase has been growing significantly with contributions and other logging transports. This is **awesome**. However, taking a ton of additional dependencies just to do something simple like logging to the Console and a File is overkill.  
+
+## Usage
+``` js
+  var Riak = require('winston-riak').Riak;
+  winston.add(Riak, options);
+```
+
+In addition to the options accepted by the [riak-js][1] [client][2], the Riak transport also accepts the following options. It is worth noting that the riak-js debug option is set to *false* by default:
+
+* __level:__ Level of messages that this transport should log.
+* __bucket:__ The name of the Riak bucket you wish your logs to be in or a function to generate bucket names dynamically.
+
+``` js
+  // Use a single bucket for all your logs
+  var singleBucketTransport = new (Riak)({ bucket: 'some-logs-go-here' });
+  
+  // Generate a dynamic bucket based on the date and level
+  var dynamicBucketTransport = new (Riak)({
+    bucket: function (level, msg, meta, now) {
+      var d = new Date(now);
+      return level + [d.getDate(), d.getMonth(), d.getFullYear()].join('-');
+    }
+  });
+```
+
+*Metadata:* Logged as JSON literal in Riak
+
+#### Author: [Charlie Robbins](http://blog.nodejitsu.com)
+
+[0]: https://github.com/indexzero/winston
+[1]: http://riakjs.org
+[2]: https://github.com/frank06/riak-js/blob/master/src/http_client.coffee#L10
