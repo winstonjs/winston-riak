@@ -22,7 +22,7 @@ catch (ex) {
   var error = [
     'Error running tests: ' + ex.message,
     '',
-    'To run `winston-mongodb tests you need to`',
+    'To run `winston-riak tests you need to`',
     'install winston locally in this project',
     '',
     '  cd ' + path.join(__dirname, '..'),
