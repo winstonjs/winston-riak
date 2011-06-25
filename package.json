@@ -1,7 +1,7 @@
 {
   "name": "winston-riak",
   "description": "A Riak transport for winston",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "repository": {
     "type": "git",
@@ -9,8 +9,7 @@
   },
   "keywords": ["logging", "sysadmin", "tools", "winston", "riak"],
   "dependencies": {
-    "riak-js": ">= 0.4.0rc2",
-    "mongodb": "0.9.x"
+    "riak-js": ">= 0.4.0rc2"
   },
   "devDependencies": {
     "vows": "0.5.x"
