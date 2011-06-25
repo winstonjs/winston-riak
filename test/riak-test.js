@@ -6,8 +6,6 @@
  *
  */
 
-require.paths.unshift(require('path').join(__dirname, '..', 'lib'));
-
 var path = require('path'),
     vows = require('vows'),
     assert = require('assert'),
@@ -39,12 +37,12 @@ function assertRiak (transport) {
   assert.isFunction(transport.log);
 };
 
-var transport = new (winston.transports.Riak)();
+var transport = new Riak();
 
 vows.describe('winston-riak').addBatch({
  "An instance of the Riak Transport": {
    "should have the proper methods defined": function () {
-     helpers.assertRiak(transport);
+     assertRiak(transport);
    },
    "the log() method": helpers.testNpmLevels(transport, "should log messages to riak", function (ign, err, meta, result) {
      assert.isTrue(!err);
