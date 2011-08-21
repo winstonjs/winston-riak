@@ -9,28 +9,9 @@
 var path = require('path'),
     vows = require('vows'),
     assert = require('assert'),
+    winston = require('winston'),
+    helpers = require('winston/test/helpers'),
     Riak = require('../lib/winston-riak').Riak;
-
-try {
-  var winston = require('winston'),
-      utils   = require('winston/lib/winston/utils'),
-      helpers = require('winston/test/helpers');
-}
-catch (ex) {
-  var error = [
-    'Error running tests: ' + ex.message,
-    '',
-    'To run `winston-riak tests you need to`',
-    'install winston locally in this project',
-    '',
-    '  cd ' + path.join(__dirname, '..'),
-    '  npm install winston',
-    '  vows --spec'
-  ].join('\n');
-  
-  console.log(error);
-  process.exit(1);
-}
 
 function assertRiak (transport) {
   assert.instanceOf(transport, Riak);
