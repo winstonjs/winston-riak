@@ -5,13 +5,16 @@ A Riak transport for [winston][0].
 ## Installation
 
 ### Installing npm (node package manager)
-```
-  curl http://npmjs.org/install.sh | sh
+
+``` bash
+  $ curl http://npmjs.org/install.sh | sh
 ```
 
 ### Installing winston-riak
-```
-  [sudo] npm install winston-riak
+
+``` bash
+  $ npm install winston
+  $ npm install winston-riak
 ```
 
 ## Motivation
@@ -21,8 +24,15 @@ The [winston][0] codebase has been growing significantly with contributions and 
 
 ## Usage
 ``` js
-  var Riak = require('winston-riak').Riak;
-  winston.add(Riak, options);
+  var winston = require('winston');
+  
+  //
+  // Requiring `winston-riak` will expose 
+  // `winston.transports.Riak`
+  //
+  require('winston-riak').Riak;
+  
+  winston.add(winston.transports.Riak, options);
 ```
 
 In addition to the options accepted by the [riak-js][1] [client][2], the Riak transport also accepts the following options. It is worth noting that the riak-js debug option is set to *false* by default:
@@ -32,10 +42,10 @@ In addition to the options accepted by the [riak-js][1] [client][2], the Riak tr
 
 ``` js
   // Use a single bucket for all your logs
-  var singleBucketTransport = new (Riak)({ bucket: 'some-logs-go-here' });
+  var singleBucketTransport = new (winston.transports.Riak)({ bucket: 'some-logs-go-here' });
   
   // Generate a dynamic bucket based on the date and level
-  var dynamicBucketTransport = new (Riak)({
+  var dynamicBucketTransport = new (winston.transports.Riak)({
     bucket: function (level, msg, meta, now) {
       var d = new Date(now);
       return level + [d.getDate(), d.getMonth(), d.getFullYear()].join('-');
