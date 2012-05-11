@@ -9,11 +9,11 @@
   },
   "keywords": ["logging", "sysadmin", "tools", "winston", "riak"],
   "dependencies": {
-    "riak-js": ">= 0.4.x"
+    "riak-js": "0.4.x"
   },
   "devDependencies": {
-    "winston": "0.4.x",
-    "vows": "0.5.x"
+    "winston": "0.5.x",
+    "vows": "0.6.x"
   },
   "main": "./lib/winston-riak",
   "scripts": { "test": "vows test/*-test.js --spec" },

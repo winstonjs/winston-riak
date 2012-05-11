@@ -2,21 +2,6 @@
 
 A Riak transport for [winston][0].
 
-## Installation
-
-### Installing npm (node package manager)
-
-``` bash
-  $ curl http://npmjs.org/install.sh | sh
-```
-
-### Installing winston-riak
-
-``` bash
-  $ npm install winston
-  $ npm install winston-riak
-```
-
 ## Motivation
 `tldr;?`: To break the [winston][0] codebase into small modules that work together.
 
@@ -54,6 +39,21 @@ In addition to the options accepted by the [riak-js][1] [client][2], the Riak tr
 ```
 
 *Metadata:* Logged as JSON literal in Riak
+
+## Installation
+
+### Installing npm (node package manager)
+
+``` bash
+  $ curl http://npmjs.org/install.sh | sh
+```
+
+### Installing winston-riak
+
+``` bash
+  $ npm install winston
+  $ npm install winston-riak
+```
 
 #### Author: [Charlie Robbins](http://blog.nodejitsu.com)
 
